@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Adresat</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="Lidhu">Lidhu</string>
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="LoginTXT">Per tu kyqur ne databaze perdorni numrin tuaj personal, numrin e regjistrimit te biznesit ose numrin identifikues te institucionit.</string>
+    <string name="Krijo">Nuk keni llogari?</string>
+    <string name="KrijoLlogari">Regjistrohu</string>
+
+</resources>
