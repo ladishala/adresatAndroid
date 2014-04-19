@@ -14,16 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/KrijoLlogari" />
-
-    <TextView
-        android:id="@+id/txtErrorMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/txtMesazhi"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:textColor="#FF0000" />
+        android:text="@string/KrijoLlogari"
+        android:onClick="regjistrohuClick" />
 
     <EditText
         android:id="@+id/editcUsername"
@@ -43,7 +35,6 @@
         android:layout_alignRight="@+id/txt22"
         android:layout_alignTop="@+id/txt3"
         android:layout_marginBottom="15dp"
-        android:text="Prishtine"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Spinner
@@ -61,11 +52,11 @@
         android:layout_alignTop="@+id/txt1"
         android:layout_marginBottom="15dp"
         android:layout_toRightOf="@+id/txt1"
-        android:text="Lavderim Shala"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/editEmail"
+    	android:inputType="textEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editcPassword2"
@@ -102,9 +93,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/txt2"
-        android:layout_below="@+id/editText1"
-        android:text="@string/Krijo"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_below="@+id/editEmail"
+        android:textColor="#FF0000" />
 
     <TextView
         android:id="@+id/txt1"
@@ -138,7 +128,6 @@
         android:layout_alignLeft="@+id/txt11"
         android:layout_alignTop="@+id/txt2"
         android:layout_marginBottom="15dp"
-        android:text="23/04/1993"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ProgressBar
@@ -148,6 +137,7 @@
         android:layout_alignBottom="@+id/txt33"
         android:layout_alignRight="@+id/txt11"
         android:layout_alignTop="@+id/txt22"
-        android:layout_toRightOf="@+id/txt33" />
+        android:layout_toRightOf="@+id/txt33"
+        android:visibility="gone" />
 
 </RelativeLayout>

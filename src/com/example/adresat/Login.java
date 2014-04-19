@@ -122,10 +122,9 @@ protected void onPostExecute(String credentials) {
     {
     	String dbHash=credentials.substring(0,40);
     	String salt=credentials.substring(40);
-    	String Hash1=hash("Ladi1234");
+    	String Hash1=hash(editPassword.getText().toString());
     	Hash1 = Hash1+salt;
-    	String Hash=hash(Hash1+salt);
-		Mesazhi.setText(salt);
+    	String Hash=hash(Hash1);
     	if(Hash.equalsIgnoreCase(dbHash))
     	{  		
     		Intent i = new Intent(Login.this, MainActivity.class);
