@@ -1,9 +1,5 @@
 package com.example.adresat;
 
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -46,28 +42,34 @@ public class Login extends FragmentActivity {
 	{
 		objProgress.setVisibility(0);
 		(new loginTask()).execute("OK",editUsername.getText().toString());
+
 		
+	}
+	
+	public void registerClick(View v)
+	{
+		Intent i = new Intent(Login.this, KrijoUser.class);
+		startActivity(i);
 		
 		
 	}
-	 
 	
-	public String hash(String s, String algorithm) {
-	    
-		MessageDigest md = null;
-		try {
-			md = MessageDigest.getInstance("SHA-1");
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			md.update(s.getBytes("Unicode"));
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return new BigInteger(md.digest()).toString(16);
+	public String hash(String s)
+	{
+		
+		StringBuffer sb = new StringBuffer();
+	    try {
+	        MessageDigest md = MessageDigest.getInstance("SHA-1");
+	        md.update(s.getBytes());
+	        byte byteData[] = md.digest();
+	        for (int i = 0; i < byteData.length; i++) {
+	            sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16)
+	                    .substring(1));
+	        }
+	    } catch (NoSuchAlgorithmException e) {
+	        e.printStackTrace();
+	    }
+	    return sb.toString();
 	}
 
 
@@ -120,8 +122,10 @@ protected void onPostExecute(String credentials) {
     {
     	String dbHash=credentials.substring(0,40);
     	String salt=credentials.substring(40);
-    	String Hash=hash(editPassword.getText().toString()+salt,"SHA-1");
-    	Mesazhi.setText(Hash);
+    	String Hash1=hash("Ladi1234");
+    	Hash1 = Hash1+salt;
+    	String Hash=hash(Hash1+salt);
+		Mesazhi.setText(salt);
     	if(Hash.equalsIgnoreCase(dbHash))
     	{  		
     		Intent i = new Intent(Login.this, MainActivity.class);
@@ -130,7 +134,9 @@ protected void onPostExecute(String credentials) {
     	else
     	{
     		
-    		//Mesazhi.setText("Keni dhene kredenciale jo valide!");
+    		Mesazhi.setText("Keni dhene te dhena jo valide!");
+    		editUsername.setText("");
+    		editPassword.setText("");
     	}
     	
     	
@@ -138,7 +144,9 @@ protected void onPostExecute(String credentials) {
     else
     {
     	
-    	Mesazhi.setText("Keni dhene kredenciale jo valide!");
+    	Mesazhi.setText("Keni dhene te dhena jo valide!");
+    	editUsername.setText("");
+		editPassword.setText("");
     }
     }
 }

@@ -10,5 +10,10 @@
     <string name="LoginTXT">Per tu kyqur ne databaze perdorni numrin tuaj personal, numrin e regjistrimit te biznesit ose numrin identifikues te institucionit.</string>
     <string name="Krijo">Nuk keni llogari?</string>
     <string name="KrijoLlogari">Regjistrohu</string>
+    <string name="RepeatPassword">Ri-shkruaj Password</string>
+    <string name="Emri">Emri dhe Mbiemri:</string>
+    <string name="Datelindja">Datelindja:</string>
+    <string name="Vendlindja">Vendlindja:</string>
+    <string name="Email">Email</string>
 
 </resources>

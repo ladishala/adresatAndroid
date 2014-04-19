@@ -55,10 +55,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/KrijoLlogari" />
+        android:text="@string/KrijoLlogari"
+        android:onClick="registerClick" />
 
     <TextView
-        android:id="@+id/txtKrijo"
+        android:id="@+id/txtMesazhi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btnRegister"
@@ -80,7 +81,7 @@
         android:id="@+id/txtErrorMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/txtKrijo"
+        android:layout_above="@+id/txtMesazhi"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
         android:textColor="#FF0000" />

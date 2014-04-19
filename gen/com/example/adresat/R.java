@@ -223,40 +223,59 @@ containing a value of this type.
         public static final int ic_plusone_tall_off_client=0x7f02001d;
     }
     public static final class id {
-        public static final int action_settings=0x7f05000f;
-        public static final int btnLogin=0x7f050008;
-        public static final int btnRegister=0x7f050009;
-        public static final int button1=0x7f05000e;
-        public static final int editPassword=0x7f050007;
-        public static final int editUsername=0x7f050006;
+        public static final int action_settings=0x7f05001c;
+        public static final int btnLogin=0x7f050017;
+        public static final int btnRegister=0x7f050018;
+        public static final int btnRegistrohu=0x7f050005;
+        public static final int button1=0x7f05001b;
+        public static final int editPassword=0x7f050016;
+        public static final int editText1=0x7f05000f;
+        public static final int editUsername=0x7f050015;
+        public static final int editcPassword=0x7f050011;
+        public static final int editcPassword2=0x7f050010;
+        public static final int editcUsername=0x7f050008;
         public static final int hybrid=0x7f050004;
-        public static final int loginProgress=0x7f05000b;
-        public static final int mapview=0x7f05000d;
+        public static final int loginProgress=0x7f050019;
+        public static final int mapview=0x7f05001a;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
+        public static final int progressBar1=0x7f050013;
         public static final int satellite=0x7f050002;
+        public static final int spLloji=0x7f050009;
         public static final int terrain=0x7f050003;
-        public static final int txtErrorMessage=0x7f05000c;
-        public static final int txtKrijo=0x7f05000a;
-        public static final int txtLogin=0x7f050005;
+        public static final int txt1=0x7f05000e;
+        public static final int txt11=0x7f05000d;
+        public static final int txt2=0x7f050012;
+        public static final int txt22=0x7f05000b;
+        public static final int txt3=0x7f05000c;
+        public static final int txt33=0x7f05000a;
+        public static final int txtErrorMessage=0x7f050006;
+        public static final int txtLogin=0x7f050014;
+        public static final int txtMesazhi=0x7f050007;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f070000;
     }
     public static final class layout {
-        public static final int activity_login=0x7f030000;
-        public static final int activity_main=0x7f030001;
+        public static final int activity_krijouser=0x7f030000;
+        public static final int activity_login=0x7f030001;
+        public static final int activity_main=0x7f030002;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
     }
     public static final class string {
+        public static final int Datelindja=0x7f060026;
+        public static final int Email=0x7f060028;
+        public static final int Emri=0x7f060025;
         public static final int Krijo=0x7f060022;
         public static final int KrijoLlogari=0x7f060023;
         public static final int Lidhu=0x7f06001e;
         public static final int LoginTXT=0x7f060021;
         public static final int Password=0x7f060020;
+        public static final int RepeatPassword=0x7f060024;
         public static final int Username=0x7f06001f;
+        public static final int Vendlindja=0x7f060027;
         public static final int action_settings=0x7f06001d;
         public static final int app_name=0x7f06001b;
         /**   Title for notification shown when GooglePlayServices needs to be
