@@ -327,37 +327,40 @@ protected String doInBackground(String... params) {
 @Override
 protected void onPostExecute(String teDhenat) {
     // Display the results of the lookup.
-	
-	if(!teDhenat.substring(0,10).equals("java.net.S") && Lloji=="Individ")
+
+	if(!teDhenat.equals("anyType{}") && !teDhenat.substring(0,10).equals("java.net.S"))
 	{
-		
-		String EmriMbiemri = teDhenat.substring(0,teDhenat.indexOf("DataLindjes=>"));
-		String dataLindjes = teDhenat.substring(teDhenat.indexOf("DataLindjes=>")+13,teDhenat.indexOf("VendiLindjes=>")-11);
-		String vendiLindjes = teDhenat.substring(teDhenat.indexOf("VendiLindjes=>")+14);
-		t11.setText(EmriMbiemri);
-		t22.setText(dataLindjes);
-		t33.setText(vendiLindjes);
-		objProgress.setVisibility(View.GONE);
-	}
-	else if(!teDhenat.substring(0,10).equals("java.net.S") && Lloji=="Biznes")
-	{
-		String Emri = teDhenat.substring(0,teDhenat.indexOf("Pronari=>"));
-		String Pronari = teDhenat.substring(teDhenat.indexOf("Pronari=>")+9,teDhenat.indexOf("Veprimtaria=>"));
-		String Veprimtaria = teDhenat.substring(teDhenat.indexOf("Veprimtaria=>")+13);
-		t11.setText(Emri);
-		t22.setText(Pronari);
-		t33.setText(Veprimtaria);
-		objProgress.setVisibility(View.GONE);
-	}
-	else if(!teDhenat.substring(0,10).equals("java.net.S") && Lloji=="Institucion")
-	{
-		String Emri = teDhenat.substring(0,teDhenat.indexOf("Telefoni=>"));
-		String Telefoni = teDhenat.substring(teDhenat.indexOf("Telefoni=>")+10,teDhenat.indexOf("Lloji=>"));
-		String Lloji = teDhenat.substring(teDhenat.indexOf("Lloji=>")+7);
-		t11.setText(Emri);
-		t22.setText(Telefoni);
-		t33.setText(Lloji);
-		objProgress.setVisibility(View.GONE);
+		if(Lloji=="Individ")
+		{
+			
+			String EmriMbiemri = teDhenat.substring(0,teDhenat.indexOf("DataLindjes=>"));
+			String dataLindjes = teDhenat.substring(teDhenat.indexOf("DataLindjes=>")+13,teDhenat.indexOf("VendiLindjes=>")-11);
+			String vendiLindjes = teDhenat.substring(teDhenat.indexOf("VendiLindjes=>")+14);
+			t11.setText(EmriMbiemri);
+			t22.setText(dataLindjes);
+			t33.setText(vendiLindjes);
+			objProgress.setVisibility(View.GONE);
+		}
+		else if(Lloji=="Biznes")
+		{
+			String Emri = teDhenat.substring(0,teDhenat.indexOf("Pronari=>"));
+			String Pronari = teDhenat.substring(teDhenat.indexOf("Pronari=>")+9,teDhenat.indexOf("Veprimtaria=>"));
+			String Veprimtaria = teDhenat.substring(teDhenat.indexOf("Veprimtaria=>")+13);
+			t11.setText(Emri);
+			t22.setText(Pronari);
+			t33.setText(Veprimtaria);
+			objProgress.setVisibility(View.GONE);
+		}
+		else if(Lloji=="Institucion")
+		{
+			String Emri = teDhenat.substring(0,teDhenat.indexOf("Telefoni=>"));
+			String Telefoni = teDhenat.substring(teDhenat.indexOf("Telefoni=>")+10,teDhenat.indexOf("Lloji=>"));
+			String Lloji = teDhenat.substring(teDhenat.indexOf("Lloji=>")+7);
+			t11.setText(Emri);
+			t22.setText(Telefoni);
+			t33.setText(Lloji);
+			objProgress.setVisibility(View.GONE);
+		}
 	}
     }
 }
