@@ -40,10 +40,16 @@ public class Login extends FragmentActivity {
 	
 	public void loginClick(View v)
 	{
+		if(editUsername.getText().toString().length()!=0 && editPassword.getText().toString().length()!=0)
+		{
 		objProgress.setVisibility(0);
-		(new loginTask()).execute("OK",editUsername.getText().toString());
-
 		
+		(new loginTask()).execute("OK",editUsername.getText().toString());
+		}
+		else
+		{	
+			Mesazhi.setText("Mbushni Username dhe Password!");
+		}	
 	}
 	
 	public void registerClick(View v)
@@ -118,10 +124,17 @@ protected String doInBackground(String... params) {
 protected void onPostExecute(String credentials) {
     // Display the results of the lookup.
 	objProgress.setVisibility(View.GONE);
-    if(credentials!="Deshtoi" && credentials.length()>40)
+	Mesazhi.setText(credentials);
+	if (credentials.equals("anyType{}"))
+    {
+    	Mesazhi.setText("Keni dhene te dhena jo valide!");
+    	editUsername.setText("");
+		editPassword.setText("");
+    }
+	else if(credentials.substring(44).equals("OK"))
     {
     	String dbHash=credentials.substring(0,40);
-    	String salt=credentials.substring(40);
+    	String salt=credentials.substring(40,44);
     	String Hash1=hash(editPassword.getText().toString());
     	Hash1 = Hash1+salt;
     	String Hash=hash(Hash1);
@@ -140,10 +153,10 @@ protected void onPostExecute(String credentials) {
     	
     	
     }
+    
     else
     {
-    	
-    	Mesazhi.setText("Keni dhene te dhena jo valide!");
+    	Mesazhi.setText("Gabim me lidhjen ne databaze!");
     	editUsername.setText("");
 		editPassword.setText("");
     }

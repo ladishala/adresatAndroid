@@ -3,6 +3,8 @@ package com.example.adresat;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,7 +17,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnFocusChangeListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -43,6 +49,10 @@ public class KrijoUser extends FragmentActivity implements OnFocusChangeListener
 	boolean errorIregjistruar=false;
 	String Gabimi="";
 	AlertDialog.Builder Alert;
+	ArrayAdapter<String> myAdapter;
+	List<String> listItems = new ArrayList<String>();
+	List<String> listItemExtras = new ArrayList<String>();
+	String Lloji="";
 	
 	
 	@Override
@@ -64,9 +74,74 @@ public class KrijoUser extends FragmentActivity implements OnFocusChangeListener
 		objProgress = (ProgressBar)findViewById(R.id.progressBar1);
 		editUsername.setOnFocusChangeListener(this);
 		
-		
-		
+		myAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_2, android.R.id.text1,
+				listItems) {
+			@Override
+			public View getView(int position, View convertView, ViewGroup parent) {
+				View view = super.getView(position, convertView, parent);
+				TextView text1 = (TextView) view
+						.findViewById(android.R.id.text1);
+				TextView text2 = (TextView) view
+						.findViewById(android.R.id.text2);
 
+				text1.setText(listItems.get(position));
+				text2.setText(listItemExtras.get(position));
+				return view;
+			}
+		};
+
+		spLista.setAdapter(myAdapter);
+		
+		listItems.add("Llogaria");
+		listItemExtras.add("Zgjedhni llojin e llogarise!");
+		
+		listItems.add("Individ");
+		listItemExtras.add("NrPersonal = Username");
+		
+		listItems.add("Biznes");
+		listItemExtras.add("NrBiznesit = Username");
+		
+		listItems.add("Institucion");
+		listItemExtras.add("NrInstitucionit = Username");
+		
+		myAdapter.notifyDataSetChanged();
+		
+		spLista.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+	        @Override
+	        public void onItemSelected(AdapterView<?> arg0, View arg1,
+	                int arg2, long arg3) {
+
+	            if(arg2==1)
+	            {
+	            	t1.setText("Emri dhe Mbiemri: ");
+	            	t2.setText("Datelindja: ");
+	            	t3.setText("Vendlindja:");
+	            	Lloji="Individ";
+	            }
+	            else if(arg2==2)
+	            {
+	            	t1.setText("Emri i Biznesit: ");
+	            	t2.setText("Pronari: ");
+	            	t3.setText("Veprimatria :");
+	            	Lloji="Biznes";
+	            }
+	            else if(arg2==3)
+	            {
+	            	t1.setText("Emri i Institucionit: ");
+	            	t2.setText("Lloji: ");
+	            	t3.setText("Tjeter: ");
+	            	Lloji="Institucion";
+	            }
+	        }
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+	    });
 	}
 
 	@Override
@@ -81,7 +156,14 @@ public class KrijoUser extends FragmentActivity implements OnFocusChangeListener
 	{
 		Gabimi="";
 		valid=false;
-		(new validouserTask()).execute(editUsername.getText().toString(),"Individ");
+		if(Lloji!="")
+		{
+		(new validouserTask()).execute(editUsername.getText().toString(),Lloji);
+		}
+		else
+		{
+			Mesazhi.setText("Zgjedhnji llojin e llogarise!");
+		}
 		
 	}
 	private boolean validuesi()
@@ -122,7 +204,7 @@ public class KrijoUser extends FragmentActivity implements OnFocusChangeListener
 		}
 		
 		int l = UserName.length();
-		if(errorNukEgziston || (l!=10 && l!=8 && l!= 9) )
+		if(errorNukEgziston  || (l!=10 && l!=8 && l!= 9) )
 		{
 			Gabimi +="\nKeni dhene Username jovalid.";
 			editUsername.setText("");
@@ -134,6 +216,13 @@ public class KrijoUser extends FragmentActivity implements OnFocusChangeListener
 			Gabimi +="\nKy Username eshte i regjistruar.";
 			editUsername.setText("");
 			dalja=false;
+		}
+		
+		if(Lloji=="")
+		{
+			Gabimi ="Zgjedhnji llojin e llogarise!";
+			dalja=false;
+			
 		}
 		return dalja;
 		
@@ -207,10 +296,7 @@ protected String doInBackground(String... params) {
     
 	String lloji=params[0];
 	String funksioni="";
-    /**
-     * Marrim Mesazhin nga konstruktori
-     */
-    
+
     /**
      * /Krijojme objektin e Web Sherbimit
      */
@@ -225,13 +311,15 @@ protected String doInBackground(String... params) {
     argumentet[0]="NrPersonal";
     funksioni="lexoRegjistrinCivil";
     }
-    else if(lloji=="Kompani")
+    else if(lloji=="Biznes")
     {
-    	argumentet[0]="NrPersonal";	
+    	argumentet[0]="NrBiznesit";	
+    	funksioni="lexoArbk";
     }
-    else
+    else if(lloji=="Institucion")
     {
     	argumentet[0]="NrPersonal";
+    	
     }
     
     argumentet[1]=editUsername.getText().toString();
@@ -246,7 +334,8 @@ protected String doInBackground(String... params) {
 @Override
 protected void onPostExecute(String teDhenat) {
     // Display the results of the lookup.
-	if(teDhenat.length()>20)
+	
+	if(!teDhenat.substring(0,10).equals("java.net.S") && Lloji=="Individ")
 	{
 		
 		String EmriMbiemri = teDhenat.substring(0,teDhenat.indexOf("DataLindjes=>"));
@@ -255,6 +344,16 @@ protected void onPostExecute(String teDhenat) {
 		t11.setText(EmriMbiemri);
 		t22.setText(dataLindjes);
 		t33.setText(vendiLindjes);
+		objProgress.setVisibility(View.GONE);
+	}
+	else if(!teDhenat.substring(0,10).equals("java.net.S") && Lloji=="Biznes")
+	{
+		String Emri = teDhenat.substring(0,teDhenat.indexOf("Pronari=>"));
+		String Pronari = teDhenat.substring(teDhenat.indexOf("Pronari=>")+9,teDhenat.indexOf("Veprimtaria=>"));
+		String Veprimtaria = teDhenat.substring(teDhenat.indexOf("Veprimtaria=>")+13);
+		t11.setText(Emri);
+		t22.setText(Pronari);
+		t33.setText(Veprimtaria);
 		objProgress.setVisibility(View.GONE);
 	}
     }
@@ -297,7 +396,14 @@ protected String doInBackground(String... params) {
 @Override
 protected void onPostExecute(String teDhenat) {
     // Display the results of the lookup.
+	if(teDhenat.equals("U insertua me sukses"))
+	{
 	showFinishAlert();
+	}
+	else
+	{
+		Mesazhi.setText("Gabim me lidhjen me databaze");
+	}
     }
 }
 
@@ -333,32 +439,39 @@ protected String doInBackground(String... params) {
 @Override
 protected void onPostExecute(String teDhenat) {
     // Display the results of the lookup.
-	String Iregjistruar = teDhenat.substring(0,teDhenat.indexOf(","));
-	String Egziston = teDhenat.substring(teDhenat.indexOf(",")+1);
-	if(Iregjistruar.equals("True"))
+	if(teDhenat.length()==10 || teDhenat.length()==11 || teDhenat.length()==9)
 	{
-		errorIregjistruar=true;
-	}
-	if(Egziston.equals("False"))
-	{
-		errorNukEgziston=true;
+		String Iregjistruar = teDhenat.substring(0,teDhenat.indexOf(","));
+		String Egziston = teDhenat.substring(teDhenat.indexOf(",")+1);
+		if(Iregjistruar.equals("True"))
+		{
+			errorIregjistruar=true;
+		}
+		if(Egziston.equals("False"))
+		{
+			errorNukEgziston=true;
 	
-	}
-	if(validuesi())
-	{
-	String Username=editUsername.getText().toString();
-	String Hash1 = hash(editPassword.getText().toString());
-	String Salt=gjeneroSalt();
-	Hash1 = Hash1+Salt;
-	String Hash = hash(Hash1);
-	String Email = editEmail.getText().toString();
-	(new shtouserTask()).execute(Username,Hash,Salt,Email);
+		}
+		if(validuesi())
+		{
+			String Username=editUsername.getText().toString();
+			String Hash1 = hash(editPassword.getText().toString());
+			String Salt=gjeneroSalt();
+			Hash1 = Hash1+Salt;
+			String Hash = hash(Hash1);
+			String Email = editEmail.getText().toString();
+			(new shtouserTask()).execute(Username,Hash,Salt,Email);
 	
+		}
+		else
+		{
+			Mesazhi.setText(Gabimi);
+			
+		}
 	}
 	else
 	{
-		Mesazhi.setText(Gabimi);
-		
+		Mesazhi.setText("Gabim me lidhjen me databaze");
 	}
     }
 }
@@ -370,7 +483,7 @@ protected void onPostExecute(String teDhenat) {
 		if(!editUsername.isFocused() && editUsername.getText().toString()!="")
 		{
 		objProgress.setVisibility(0);
-		(new lexoTask()).execute("Individ");
+		(new lexoTask()).execute(Lloji);
 		}
 }
 
