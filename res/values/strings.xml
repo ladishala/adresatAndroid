@@ -15,5 +15,7 @@
     <string name="Datelindja">Datelindja:</string>
     <string name="Vendlindja">Vendlindja:</string>
     <string name="Email">Email</string>
+    <string name="KerkoAdrese">Kerko Adrese</string>
+    <string name="RegjistroAdrese">Regjistro adresen tuaj</string>
 
 </resources>

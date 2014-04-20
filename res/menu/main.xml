@@ -3,7 +3,12 @@
     tools:context="com.example.adresat.MainActivity" >
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_logout"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+	/>
+    <item
+        android:id="@+id/action_ChangePassword"
         android:orderInCategory="100"
         android:title="@string/action_settings"
 	/>

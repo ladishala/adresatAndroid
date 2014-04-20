@@ -29,6 +29,11 @@
             android:label="@string/app_name" >
            
         </activity>
+        <activity
+            android:name="com.example.adresat.Board"
+            android:label="@string/app_name" >
+           
+        </activity>
          <activity
             android:name="com.example.adresat.KrijoUser"
             android:label="@string/app_name" >

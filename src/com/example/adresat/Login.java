@@ -124,7 +124,6 @@ protected String doInBackground(String... params) {
 protected void onPostExecute(String credentials) {
     // Display the results of the lookup.
 	objProgress.setVisibility(View.GONE);
-	Mesazhi.setText(credentials);
 	if (credentials.equals("anyType{}"))
     {
     	Mesazhi.setText("Keni dhene te dhena jo valide!");
@@ -140,7 +139,8 @@ protected void onPostExecute(String credentials) {
     	String Hash=hash(Hash1);
     	if(Hash.equalsIgnoreCase(dbHash))
     	{  		
-    		Intent i = new Intent(Login.this, MainActivity.class);
+    		Intent i = new Intent(Login.this, Board.class);
+    		i.putExtra("Username", editUsername.getText().toString());
     		startActivity(i);
     	}
     	else
