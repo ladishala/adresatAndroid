@@ -15,7 +15,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnFocusChangeListener;
@@ -71,7 +70,7 @@ public class KrijoUser extends FragmentActivity implements OnFocusChangeListener
 		t33 = (TextView)findViewById(R.id.txt33);
 		Mesazhi = (TextView)findViewById(R.id.txtMesazhi);
 		spLista = (Spinner)findViewById(R.id.spLloji);
-		objProgress = (ProgressBar)findViewById(R.id.progressBar1);
+		objProgress = (ProgressBar)findViewById(R.id.progressLoading);
 		editUsername.setOnFocusChangeListener(this);
 		
 		myAdapter = new ArrayAdapter<String>(this,
@@ -130,8 +129,8 @@ public class KrijoUser extends FragmentActivity implements OnFocusChangeListener
 	            else if(arg2==3)
 	            {
 	            	t1.setText("Emri i Institucionit: ");
-	            	t2.setText("Lloji: ");
-	            	t3.setText("Tjeter: ");
+	            	t2.setText("Telefoni: ");
+	            	t3.setText("Lloji: ");
 	            	Lloji="Institucion";
 	            }
 	        }
@@ -144,13 +143,6 @@ public class KrijoUser extends FragmentActivity implements OnFocusChangeListener
 	    });
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
 	
 	public void regjistrohuClick(View v)
 	{
@@ -318,7 +310,8 @@ protected String doInBackground(String... params) {
     }
     else if(lloji=="Institucion")
     {
-    	argumentet[0]="NrPersonal";
+    	argumentet[0]="NrInstitucionit";
+    	funksioni="lexoInstitucionet";
     	
     }
     
@@ -354,6 +347,16 @@ protected void onPostExecute(String teDhenat) {
 		t11.setText(Emri);
 		t22.setText(Pronari);
 		t33.setText(Veprimtaria);
+		objProgress.setVisibility(View.GONE);
+	}
+	else if(!teDhenat.substring(0,10).equals("java.net.S") && Lloji=="Institucion")
+	{
+		String Emri = teDhenat.substring(0,teDhenat.indexOf("Telefoni=>"));
+		String Telefoni = teDhenat.substring(teDhenat.indexOf("Telefoni=>")+10,teDhenat.indexOf("Lloji=>"));
+		String Lloji = teDhenat.substring(teDhenat.indexOf("Lloji=>")+7);
+		t11.setText(Emri);
+		t22.setText(Telefoni);
+		t33.setText(Lloji);
 		objProgress.setVisibility(View.GONE);
 	}
     }

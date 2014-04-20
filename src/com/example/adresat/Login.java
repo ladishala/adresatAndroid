@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -28,15 +27,23 @@ public class Login extends FragmentActivity {
 		objProgress=(ProgressBar)findViewById(R.id.loginProgress);
 		editUsername=(EditText)findViewById(R.id.editUsername);
 		editPassword=(EditText)findViewById(R.id.editPassword);
+		
+		Intent in = getIntent();
+		boolean logout = in.getBooleanExtra("LogOut", false);
+		String cUsername =getPreferences(MODE_PRIVATE).getString("Username",""); 
+		if (logout)
+		{
+			getPreferences(MODE_PRIVATE).edit().putString("Username", "").commit();
+			
+		}
+		else if(!cUsername.equals(""))
+		{
+			Intent i = new Intent(Login.this, Board.class);
+    		i.putExtra("Username", cUsername);
+    		startActivity(i);
+		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
 	
 	public void loginClick(View v)
 	{
@@ -138,7 +145,8 @@ protected void onPostExecute(String credentials) {
     	Hash1 = Hash1+salt;
     	String Hash=hash(Hash1);
     	if(Hash.equalsIgnoreCase(dbHash))
-    	{  		
+    	{  	
+    		getPreferences(MODE_PRIVATE).edit().putString("Username", editUsername.getText().toString()).commit();
     		Intent i = new Intent(Login.this, Board.class);
     		i.putExtra("Username", editUsername.getText().toString());
     		startActivity(i);

@@ -13,6 +13,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
 import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -51,16 +52,18 @@ OnMarkerClickListener {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		// Handle item selection
+		if (item.getItemId() == R.id.action_logout) {
+			Intent i = new Intent(MainActivity.this, Login.class);
+			i.putExtra("LogOut", true);
+			startActivity(i);
+
 		}
-		return super.onOptionsItemSelected(item);
+		return true;
+
 	}
 
+	
 	@Override
 	public boolean onMarkerClick(Marker marker) {
 		// TODO Auto-generated method stub

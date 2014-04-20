@@ -17,5 +17,7 @@
     <string name="Email">Email</string>
     <string name="KerkoAdrese">Kerko Adrese</string>
     <string name="RegjistroAdrese">Regjistro adresen tuaj</string>
+    <string name="Logout">Dil</string>
+    <string name="NdrroPassword">Nderro Fjalekalimin</string>
 
 </resources>
