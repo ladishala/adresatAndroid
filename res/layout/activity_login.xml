@@ -47,26 +47,20 @@
         android:layout_below="@+id/editPassword"
         android:layout_marginTop="19dp"
         android:onClick="loginClick"
-        android:text="@string/Lidhu" />
+        android:text="@string/Lidhu"
+        android:drawableLeft="@drawable/key"
+         />
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnLogin"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/KrijoLlogari"
-        android:onClick="registerClick" />
-
-    <TextView
-        android:id="@+id/txtMesazhi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnRegister"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
-        android:text="@string/Krijo"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_alignRight="@+id/editUsername"
+        android:drawableLeft="@drawable/user"
+        android:onClick="registerClick"
+        android:text="@string/KrijoLlogari" />
 
     <ProgressBar
         android:id="@+id/loginProgress"
@@ -81,10 +75,19 @@
         android:id="@+id/txtErrorMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/txtMesazhi"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
+        android:layout_alignLeft="@+id/editUsername"
+        android:layout_below="@+id/btnLogin"
         android:textColor="#FF0000" />
+
+    <Button
+        android:id="@+id/btnlKerko"
+        android:drawableLeft="@drawable/kerkosmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnRegister"
+        android:layout_alignLeft="@+id/btnRegister"
+        android:layout_alignRight="@+id/btnRegister"
+        android:text="@string/KerkoAdrese" />
 
    </RelativeLayout>
 

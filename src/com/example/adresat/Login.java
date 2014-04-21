@@ -30,10 +30,10 @@ public class Login extends FragmentActivity {
 		
 		Intent in = getIntent();
 		boolean logout = in.getBooleanExtra("LogOut", false);
-		String cUsername =getPreferences(MODE_PRIVATE).getString("Username",""); 
+		String cUsername = getSharedPreferences("Settings",MODE_PRIVATE).getString("Username", "");
 		if (logout)
 		{
-			getPreferences(MODE_PRIVATE).edit().putString("Username", "").commit();
+			getSharedPreferences("Settings", MODE_PRIVATE).edit().putString("Username", "").commit();
 			
 		}
 		else if(!cUsername.equals(""))
@@ -146,7 +146,7 @@ protected void onPostExecute(String credentials) {
     	String Hash=hash(Hash1);
     	if(Hash.equalsIgnoreCase(dbHash))
     	{  	
-    		getPreferences(MODE_PRIVATE).edit().putString("Username", editUsername.getText().toString()).commit();
+    		getSharedPreferences("Settings", MODE_PRIVATE).edit().putString("Username", editUsername.getText().toString()).commit();
     		Intent i = new Intent(Login.this, Board.class);
     		i.putExtra("Username", editUsername.getText().toString());
     		startActivity(i);

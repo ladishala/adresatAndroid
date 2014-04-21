@@ -7,10 +7,10 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 
 
 public class Board extends FragmentActivity {
@@ -24,12 +24,15 @@ public class Board extends FragmentActivity {
 	String Username;
 	ImageView imgProfile;
 	ProgressBar objProgress;
+	Button btnRegjister;
+	boolean iRegjistruar=false;
 		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_board);
 		
+		btnRegjister = (Button)findViewById(R.id.btnShto);
 		t1 = (TextView)findViewById(R.id.txtb1);
 		t2 = (TextView)findViewById(R.id.txtb2);
 		t3 = (TextView)findViewById(R.id.txtb3);
@@ -39,8 +42,11 @@ public class Board extends FragmentActivity {
 		imgProfile = (ImageView)findViewById(R.id.imgProfile);
 		objProgress = (ProgressBar)findViewById(R.id.progressLoading);
 		
+		
 		Intent i = getIntent();
 		Username= i.getStringExtra("Username");
+		
+		(new validoRegjistriminTask()).execute(Username);
 		String lloji="Institucion";
 		if(Username.length()==10)
 		{
@@ -77,7 +83,19 @@ public class Board extends FragmentActivity {
 		return true;
 
 	}
-
+	public void registerClick(View v)
+	{
+		
+		Intent i = new Intent(Board.this,MainActivity.class);
+		if(iRegjistruar)
+		{
+			i.putExtra("iRegjistruar", true);
+			
+		}
+		startActivity(i);
+		
+	}
+	
 	private class lexoTask extends
     AsyncTask<String, Void, String> {
 		
@@ -184,6 +202,46 @@ protected void onPostExecute(String teDhenat) {
 	
     }
 }
+
+	private class validoRegjistriminTask extends
+	AsyncTask<String, Void, String> {
+		
+		@Override
+		protected String doInBackground(String... params) {
+		
+			/**
+			 * /Krijojme objektin e Web Sherbimit
+			 */
+			WebserviceCall objThirrja = new WebserviceCall(); 
+			
+			/**
+			 * /Thirrim Web Sherbimin dhe marrim pergjigjjen.
+			 */
+			String argumentet[] = new String[2];
+			
+			argumentet[0]="PerdoruesiID";
+			argumentet[1]=params[0];
+			
+			
+			String aResponse = objThirrja.thirrMetoden("validoRegjistrimin", argumentet); 
+			
+			return aResponse;
+		
+	}
+
+
+
+		@Override
+		protected void onPostExecute(String teDhenat) {
+			// Display the results of the lookup.
+			if(teDhenat.equals("True"))
+			{
+				iRegjistruar=true;
+				btnRegjister.setText("Ndrysho adresen tuaj");
+				
+			}
+		}
+	}
 
 }	
 		

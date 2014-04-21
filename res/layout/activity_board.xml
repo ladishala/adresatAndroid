@@ -22,6 +22,7 @@
 
     <Button
         android:id="@+id/btnKerko"
+        android:drawableLeft="@drawable/kerkod"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/imgStatic"
@@ -31,22 +32,24 @@
 
     <Button
         android:id="@+id/btnShto"
+        android:drawableLeft="@drawable/registerd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btnKerko"
         android:layout_alignRight="@+id/btnKerko"
         android:layout_below="@+id/btnKerko"
         android:layout_marginBottom="15dp"
-        android:text="@string/RegjistroAdrese" />
+        android:text="@string/RegjistroAdrese"
+        android:onClick="registerClick" />
 
     <ImageView
         android:id="@+id/imgProfile"
-        android:contentDescription="@string/Emri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnShto"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/Emri"
         android:src="@drawable/individ" />
 
     <TextView
@@ -64,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/txtb11"
         android:layout_alignTop="@+id/txtb2"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:visibility="gone" />
 
@@ -74,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/txtb1"
         android:layout_below="@+id/txtb11"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:text="@string/Datelindja"
         android:visibility="gone" />
 
@@ -111,6 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgProfile"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:visibility="visible" />
 
 </RelativeLayout>

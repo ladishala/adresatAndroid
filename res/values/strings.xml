@@ -9,7 +9,7 @@
     <string name="Password">Password</string>
     <string name="LoginTXT">Per tu kyqur ne databaze perdorni numrin tuaj personal, numrin e regjistrimit te biznesit ose numrin identifikues te institucionit.</string>
     <string name="Krijo">Nuk keni llogari?</string>
-    <string name="KrijoLlogari">Regjistrohu</string>
+    <string name="KrijoLlogari"> Regjistrohu</string>
     <string name="RepeatPassword">Ri-shkruaj Password</string>
     <string name="Emri">Emri dhe Mbiemri:</string>
     <string name="Datelindja">Datelindja:</string>
@@ -19,5 +19,11 @@
     <string name="RegjistroAdrese">Regjistro adresen tuaj</string>
     <string name="Logout">Dil</string>
     <string name="NdrroPassword">Nderro Fjalekalimin</string>
+    <string name="NumriBlloku">Nr / Blloku</string>
+    <string name="Rruga">Rruga</string>
+    <string name="QytetiZip">Qyteti / Kodi Postar</string>
+    <string name="azhuraharta">"Zgjedh permes"</string>
+    <string name="hartes">"hartes? "</string>
+    <string name="Ruaj">Ruaj</string>
 
 </resources>
