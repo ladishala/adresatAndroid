@@ -1,5 +1,6 @@
 package com.example.adresat;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.location.Location;
 import android.os.AsyncTask;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -115,6 +117,9 @@ public class Kerko extends FragmentActivity  {
 	
 	public void searchClick(View v)
 	{
+		InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+	    imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+		
 		int length = edit1.getText().toString().length();
 		if(isInteger(edit1.getText().toString()) && (length==10 || length == 9 || length ==8))
 		{
