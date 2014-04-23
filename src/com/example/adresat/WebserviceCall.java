@@ -12,8 +12,8 @@ public class WebserviceCall {
 	/**
 	 * Deklarimi i variablave namespace dhe url per websherbimin qe do ti qasemi.
 	 */
-    String namespace = "http://tempuri.org/";
-    private String url = "http://192.168.1.131/Adresat/Sherbimi.asmx";
+    String namespace = "http://adresat.org/";
+    private String url = "http://192.168.1.130/Adresat/Sherbimi.asmx";
      
     String SOAP_ACTION;
     SoapObject request = null, objMessages = null;
@@ -44,7 +44,7 @@ public class WebserviceCall {
             androidHttpTransport.debug = true;
              
         } catch (Exception e) {
-            System.out.println("Soap Exception---->>>" + e.toString());    
+              
         }
     }
  

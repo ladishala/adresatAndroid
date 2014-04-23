@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
+
+    <Button
+        android:id="@+id/btnBiznes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnIndivid"
+        android:layout_alignRight="@+id/btnIndivid"
+        android:layout_below="@+id/btnIndivid"
+        android:layout_marginTop="26dp"
+        android:text="@string/Biznes"
+        android:drawableLeft="@drawable/kerkostartbiznes"
+        android:onClick="biznesClick" />
+
+    <Button
+        android:id="@+id/btnInstitucion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnBiznes"
+        android:layout_alignRight="@+id/btnBiznes"
+        android:layout_below="@+id/btnBiznes"
+        android:layout_marginTop="29dp"
+        android:text="@string/Institucion"
+        android:drawableLeft="@drawable/kerkostartinstitution"
+        android:onClick="institucionClick" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="@string/qkapokerkon"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/btnIndivid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/kerkostartperson"
+        android:onClick="individClick"
+        android:text="@string/Individ" />
+
+</RelativeLayout>

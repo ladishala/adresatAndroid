@@ -226,80 +226,122 @@ containing a value of this type.
         public static final int individ=0x7f020020;
         public static final int intitution=0x7f020021;
         public static final int kerkod=0x7f020022;
-        public static final int kerkosmall=0x7f020023;
-        public static final int key=0x7f020024;
-        public static final int pencilpen=0x7f020025;
-        public static final int registerd=0x7f020026;
-        public static final int save=0x7f020027;
-        public static final int user=0x7f020028;
+        public static final int kerkoo=0x7f020023;
+        public static final int kerkosmall=0x7f020024;
+        public static final int kerkostartbiznes=0x7f020025;
+        public static final int kerkostartinstitution=0x7f020026;
+        public static final int kerkostartperson=0x7f020027;
+        public static final int key=0x7f020028;
+        public static final int pencilpen=0x7f020029;
+        public static final int registerd=0x7f02002a;
+        public static final int save=0x7f02002b;
+        public static final int user=0x7f02002c;
     }
     public static final class id {
-        public static final int TextView01=0x7f05002d;
-        public static final int action_ChangePassword=0x7f05002f;
-        public static final int action_logout=0x7f050030;
+        public static final int TextView01=0x7f050012;
+        public static final int action_ChangePassword=0x7f05004d;
+        public static final int action_logout=0x7f05004e;
+        public static final int btnBiznes=0x7f05001f;
+        public static final int btnIndivid=0x7f05001b;
+        public static final int btnInstitucion=0x7f050020;
         public static final int btnKerko=0x7f050006;
-        public static final int btnLogin=0x7f050020;
-        public static final int btnRegister=0x7f050021;
-        public static final int btnRegistrohu=0x7f050010;
+        public static final int btnLogin=0x7f050031;
+        public static final int btnNdrysho=0x7f05003e;
+        public static final int btnRegister=0x7f050032;
+        public static final int btnRegistrohu=0x7f050021;
         public static final int btnShto=0x7f050007;
-        public static final int btnlKerko=0x7f050024;
-        public static final int editEmail=0x7f050018;
-        public static final int editNumri=0x7f050029;
-        public static final int editPassword=0x7f05001f;
-        public static final int editQyteti=0x7f05002a;
-        public static final int editRruga=0x7f050028;
-        public static final int editUsername=0x7f05001e;
-        public static final int editcPassword=0x7f05001a;
-        public static final int editcPassword2=0x7f050019;
-        public static final int editcUsername=0x7f050011;
+        public static final int btnlKerko=0x7f050035;
+        public static final int editEmail=0x7f050029;
+        public static final int editNewPassword=0x7f05003f;
+        public static final int editNewPassword2=0x7f050040;
+        public static final int editNumri=0x7f050039;
+        public static final int editOldPassword=0x7f050041;
+        public static final int editPassword=0x7f050030;
+        public static final int editPrimary=0x7f050016;
+        public static final int editQyteti=0x7f05003a;
+        public static final int editRruga=0x7f050038;
+        public static final int editSecond=0x7f050015;
+        public static final int editThird=0x7f050017;
+        public static final int editUsername=0x7f05002f;
+        public static final int editcPassword=0x7f05002b;
+        public static final int editcPassword2=0x7f05002a;
+        public static final int editcUsername=0x7f050022;
         public static final int hybrid=0x7f050004;
         public static final int imgProfile=0x7f050008;
-        public static final int imgRegjistro=0x7f05002c;
+        public static final int imgRegjistro=0x7f05003c;
         public static final int imgStatic=0x7f050005;
-        public static final int loginProgress=0x7f050022;
-        public static final int mapview=0x7f050025;
+        public static final int loginProgress=0x7f050033;
+        public static final int mapview=0x7f050013;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
+        public static final int progressKerko=0x7f05001e;
         public static final int progressLoading=0x7f05000f;
-        public static final int progressReading=0x7f05002e;
+        public static final int progressNdryshoo=0x7f05004b;
+        public static final int progressReading=0x7f05003d;
         public static final int satellite=0x7f050002;
-        public static final int spLloji=0x7f050012;
+        public static final int spLloji=0x7f050023;
         public static final int terrain=0x7f050003;
-        public static final int textView1=0x7f050027;
-        public static final int togleUpdate=0x7f05002b;
-        public static final int txt1=0x7f050017;
-        public static final int txt11=0x7f050016;
-        public static final int txt2=0x7f05001c;
-        public static final int txt22=0x7f050014;
-        public static final int txt3=0x7f050015;
-        public static final int txt33=0x7f050013;
-        public static final int txtError=0x7f050026;
-        public static final int txtErrorMessage=0x7f050023;
-        public static final int txtLogin=0x7f05001d;
-        public static final int txtMesazhi=0x7f05001b;
+        public static final int textView1=0x7f050018;
+        public static final int togleUpdate=0x7f05003b;
+        public static final int txt1=0x7f050028;
+        public static final int txt11=0x7f050027;
+        public static final int txt2=0x7f05002d;
+        public static final int txt22=0x7f050025;
+        public static final int txt3=0x7f050026;
+        public static final int txt33=0x7f050024;
+        public static final int txtAdresa1=0x7f050010;
+        public static final int txtAdresa2=0x7f05001c;
+        public static final int txtAdresa3=0x7f05001d;
+        public static final int txtEmail=0x7f05004a;
+        public static final int txtError=0x7f050036;
+        public static final int txtErrorMessage=0x7f050034;
+        public static final int txtKerkoMesazhi=0x7f050014;
+        public static final int txtLogin=0x7f05002e;
+        public static final int txtMesazhi=0x7f05002c;
+        public static final int txtPerdoruesi1=0x7f050011;
+        public static final int txtPerdoruesi2=0x7f050019;
+        public static final int txtPerdoruesi3=0x7f05001a;
+        public static final int txtUsername=0x7f050037;
         public static final int txtb1=0x7f050009;
         public static final int txtb11=0x7f05000a;
         public static final int txtb2=0x7f05000c;
         public static final int txtb22=0x7f05000b;
         public static final int txtb3=0x7f05000d;
         public static final int txtb33=0x7f05000e;
+        public static final int txtn1=0x7f050043;
+        public static final int txtn11=0x7f050045;
+        public static final int txtn2=0x7f050044;
+        public static final int txtn22=0x7f050048;
+        public static final int txtn3=0x7f050046;
+        public static final int txtn33=0x7f050049;
+        public static final int txtnEmail=0x7f05004c;
+        public static final int txtnError=0x7f050047;
+        public static final int txtnUsername=0x7f050042;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f070000;
     }
     public static final class layout {
         public static final int activity_board=0x7f030000;
-        public static final int activity_krijouser=0x7f030001;
-        public static final int activity_login=0x7f030002;
-        public static final int activity_main=0x7f030003;
+        public static final int activity_kerko=0x7f030001;
+        public static final int activity_kerkostart=0x7f030002;
+        public static final int activity_krijouser=0x7f030003;
+        public static final int activity_login=0x7f030004;
+        public static final int activity_main=0x7f030005;
+        public static final int activity_ndryshopassword=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
     }
     public static final class string {
+        public static final int Adresa=0x7f06003c;
+        public static final int Biznes=0x7f06003f;
         public static final int Datelindja=0x7f060026;
+        public static final int Datelindjaa=0x7f060039;
         public static final int Email=0x7f060028;
         public static final int Emri=0x7f060025;
+        public static final int Individ=0x7f06003e;
+        public static final int Institucion=0x7f060040;
         public static final int KerkoAdrese=0x7f060029;
         public static final int Krijo=0x7f060022;
         public static final int KrijoLlogari=0x7f060023;
@@ -307,15 +349,23 @@ containing a value of this type.
         public static final int LoginTXT=0x7f060021;
         public static final int Logout=0x7f06002b;
         public static final int NdrroPassword=0x7f06002c;
+        public static final int NdryshoEmail=0x7f060037;
+        public static final int NrPersonal=0x7f060038;
         public static final int NumriBlloku=0x7f06002d;
         public static final int Password=0x7f060020;
+        public static final int PasswordIvjeter=0x7f060034;
+        public static final int PasswordiiRI=0x7f060035;
+        public static final int Perdoruesi=0x7f06003b;
         public static final int QytetiZip=0x7f06002f;
         public static final int RegjistroAdrese=0x7f06002a;
+        public static final int RepeatNewPassword=0x7f060036;
         public static final int RepeatPassword=0x7f060024;
         public static final int Rruga=0x7f06002e;
         public static final int Ruaj=0x7f060032;
         public static final int Username=0x7f06001f;
+        public static final int UsernameN=0x7f060033;
         public static final int Vendlindja=0x7f060027;
+        public static final int Vendlindjaa=0x7f06003a;
         public static final int action_settings=0x7f06001d;
         public static final int app_name=0x7f06001b;
         /**   Title for notification shown when GooglePlayServices needs to be
@@ -418,6 +468,7 @@ containing a value of this type.
         /**  Location client code resources (prefix with location_client) 
          */
         public static final int location_client_powered_by_google=0x7f06001a;
+        public static final int qkapokerkon=0x7f06003d;
     }
     public static final class style {
         /** 

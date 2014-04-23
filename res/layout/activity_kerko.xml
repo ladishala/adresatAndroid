@@ -1,0 +1,149 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
+
+    <TextView
+        android:id="@+id/txtAdresa1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtPerdoruesi1"
+        android:layout_alignBottom="@+id/txtPerdoruesi1"
+        android:layout_alignLeft="@+id/TextView01"
+	 />
+
+    <fragment
+        android:id="@+id/mapview"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TextView01"
+        android:layout_below="@+id/txtKerkoMesazhi"
+        android:layout_centerHorizontal="true"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:clickable="true" />
+
+    <EditText
+        android:id="@+id/editSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editPrimary"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="@string/Datelindjaa"
+        android:inputType="textPostalAddress" />
+
+    <EditText
+        android:id="@+id/editThird"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editSecond"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="@string/Vendlindjaa"
+        android:inputType="textPostalAddress" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtPerdoruesi1"
+        android:layout_alignLeft="@+id/mapview"
+        android:text="@string/Perdoruesi"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/txtPerdoruesi1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtPerdoruesi2"
+        android:layout_alignLeft="@+id/textView1"
+         />
+
+    <TextView
+        android:id="@+id/txtPerdoruesi3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtPerdoruesi2"
+        android:layout_alignParentBottom="true"
+         />
+
+    <TextView
+        android:id="@+id/txtPerdoruesi2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtPerdoruesi3"
+        android:layout_alignLeft="@+id/txtPerdoruesi1"
+         />
+
+    <EditText
+        android:id="@+id/editPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mapview"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="@string/NrPersonal"
+        android:inputType="textPostalAddress" />
+
+    <Button
+        android:id="@+id/btnIndivid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editThird"
+        android:layout_alignRight="@+id/mapview"
+        android:layout_alignTop="@+id/editPrimary"
+        android:layout_toRightOf="@+id/editSecond"
+        android:drawableTop="@drawable/kerkoo"
+        android:onClick="searchClick" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtAdresa1"
+        android:layout_alignRight="@+id/editThird"
+        android:text="@string/Adresa"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/txtAdresa2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtAdresa3"
+        android:layout_alignLeft="@+id/txtAdresa1"
+         />
+
+    <TextView
+        android:id="@+id/txtAdresa3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtPerdoruesi3"
+        android:layout_alignBottom="@+id/txtPerdoruesi3"
+        android:layout_alignLeft="@+id/txtAdresa2"
+        />
+
+    <ProgressBar
+        android:id="@+id/progressKerko"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txtAdresa1"
+        android:layout_toLeftOf="@+id/txtAdresa1"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/txtKerkoMesazhi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editThird"
+        android:layout_below="@+id/editThird"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#FF0000" />
+
+</RelativeLayout>

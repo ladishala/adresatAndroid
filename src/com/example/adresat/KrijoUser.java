@@ -361,6 +361,7 @@ protected void onPostExecute(String teDhenat) {
 			t33.setText(Lloji);
 			objProgress.setVisibility(View.GONE);
 		}
+		
 	}
     }
 }

@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/mapview"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/textView1"
+        android:layout_toLeftOf="@+id/txtUsername"
         android:onClick="ruajClick"
         android:text="@string/Ruaj"
         android:drawableLeft="@drawable/save" />
@@ -80,7 +80,7 @@
 		 />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/txtUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/togleUpdate"
@@ -93,8 +93,8 @@
         android:id="@+id/TextView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/txtUsername"
+        android:layout_below="@+id/txtUsername"
         android:text="@string/hartes"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 

@@ -80,6 +80,12 @@ public class Board extends FragmentActivity {
 			startActivity(i);
 
 		}
+		else if(item.getItemId()==R.id.action_ChangePassword)
+		{
+			Intent i = new Intent(Board.this, NdryshoPassword.class);
+			startActivity(i);
+			
+		}
 		return true;
 
 	}
@@ -95,7 +101,12 @@ public class Board extends FragmentActivity {
 		startActivity(i);
 		
 	}
-	
+	public void kerkoClick(View v)
+	{
+		Intent i = new Intent(Board.this,KerkoStart.class);
+		startActivity(i);		
+	}
+
 	private class lexoTask extends
     AsyncTask<String, Void, String> {
 		
@@ -198,6 +209,12 @@ protected void onPostExecute(String teDhenat) {
 			imgProfile.setImageResource(R.drawable.intitution);
 			
 		}
+	}
+	else
+	{
+		Intent i = new Intent(Board.this,Login.class);
+		i.putExtra("LogOut", true);
+		startActivity(i);
 	}
 	
     }

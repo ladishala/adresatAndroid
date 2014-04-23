@@ -97,6 +97,11 @@ OnMarkerClickListener, OnEditorActionListener {
 			startActivity(i);
 
 		}
+		else if(item.getItemId()==R.id.action_ChangePassword)
+		{
+			Intent i = new Intent(MainActivity.this, NdryshoPassword.class);
+			startActivity(i);
+		}
 		return true;
 
 	}
@@ -393,7 +398,7 @@ AsyncTask<String, Void, String> {
 			tempLokacion.setLongitude(Double.parseDouble(Longitude));
 			(new GetAddressTask()).execute(tempLokacion);
 			mapView.clear();
-			
+			mapView.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(tempLokacion.getLatitude(), tempLokacion.getLongitude()), 16));
 			marker = mapView.addMarker(new MarkerOptions()
 		     .position(new LatLng(tempLokacion.getLatitude(), tempLokacion.getLongitude()))
 		     .title("Lokacioni")

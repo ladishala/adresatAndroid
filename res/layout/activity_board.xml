@@ -28,7 +28,8 @@
         android:layout_alignLeft="@+id/imgStatic"
         android:layout_alignRight="@+id/imgStatic"
         android:layout_below="@+id/imgStatic"
-        android:text="@string/KerkoAdrese" />
+        android:text="@string/KerkoAdrese"
+        android:onClick="kerkoClick" />
 
     <Button
         android:id="@+id/btnShto"

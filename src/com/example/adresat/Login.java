@@ -44,7 +44,11 @@ public class Login extends FragmentActivity {
 		}
 	}
 
-	
+	public void kerkoClick(View v)
+	{
+		Intent i = new Intent(Login.this,KerkoStart.class);
+		startActivity(i);
+	}
 	public void loginClick(View v)
 	{
 		if(editUsername.getText().toString().length()!=0 && editPassword.getText().toString().length()!=0)

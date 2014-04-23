@@ -25,5 +25,19 @@
     <string name="azhuraharta">"Zgjedh permes"</string>
     <string name="hartes">"hartes? "</string>
     <string name="Ruaj">Ruaj</string>
+    <string name="UsernameN">"Username: "</string>
+    <string name="PasswordIvjeter">Passwordi aktual</string>
+    <string name="PasswordiiRI">Passwordi i ri</string>
+    <string name="RepeatNewPassword">Rishkruaj passwordin e ri</string>
+    <string name="NdryshoEmail">"Email: "</string>
+    <string name="NrPersonal">Nr Personal</string>
+    <string name="Datelindjaa">Datelindja</string>
+    <string name="Vendlindjaa">Vendlindja</string>
+    <string name="Perdoruesi">Perdoruesi:</string>
+    <string name="Adresa">Adresa:</string>
+    <string name="qkapokerkon">Qka po kerkon?</string>
+    <string name="Individ">Individ</string>
+    <string name="Biznes">Biznes</string>
+    <string name="Institucion">Institucion</string>
 
 </resources>
