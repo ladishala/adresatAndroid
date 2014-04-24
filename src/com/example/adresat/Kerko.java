@@ -1,6 +1,8 @@
 package com.example.adresat;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.AsyncTask;
@@ -12,6 +14,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -38,6 +42,7 @@ public class Kerko extends FragmentActivity  {
 	String Username;
 	GoogleMap mapView;
 	Marker marker;
+	AlertDialog.Builder Alert;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -222,10 +227,10 @@ protected void onPostExecute(String teDhenat) {
 		{
 			String Emri = teDhenat.substring(0,teDhenat.indexOf("Telefoni=>"));
 			String Telefoni = teDhenat.substring(teDhenat.indexOf("Telefoni=>")+10,teDhenat.indexOf("Lloji=>"));
-			String Lloji = teDhenat.substring(teDhenat.indexOf("Lloji=>")+7);
+			String lloji = teDhenat.substring(teDhenat.indexOf("Lloji=>")+7);
 			txtPerdoruesi1.setText(Emri);
 			txtPerdoruesi2.setText(Telefoni);
-			txtPerdoruesi3.setText(Lloji);
+			txtPerdoruesi3.setText(lloji);
 		}
 	}
     }
@@ -332,10 +337,11 @@ protected void onPostExecute(String input) {
    	 String Kodi = input.substring(input.indexOf("Kodi=>")+6);
    	 txtAdresa2.setText(Rruga);
    	 txtAdresa3.setText(Qyteti+" "+Kodi);
-    }
+   	}
 	}
 
 }
+	
 
 	
 	private class validouserTask extends
@@ -352,14 +358,13 @@ protected String doInBackground(String... params) {
     /**
      * /Thirrim Web Sherbimin dhe marrim pergjigjjen.
      */
-    String argumentet[] = new String[4];
+    String argumentet[] = new String[2];
     
-    argumentet[0]="Username";
+    argumentet[0]="PerdoruesiID";
     argumentet[1]=params[0];
-    argumentet[2]="Lloji";
-    argumentet[3]="Tjeter";
+
         
-    String aResponse = objThirrja.thirrMetoden("validoUsername", argumentet); 
+    String aResponse = objThirrja.thirrMetoden("validoRegjistrimin", argumentet); 
     
     return aResponse;
    
@@ -442,7 +447,7 @@ protected void onPostExecute(String teDhenat) {
 	if(!teDhenat.equals(""))
 	{
 		String Key = teDhenat.substring(0,1);
-		
+		String Data = teDhenat.substring(1);
 		if(Key.equals("0"))
 		{
 			Mesazhi.setText("Asnje adrese nuk u gjet me kushtet tuaja");
@@ -456,6 +461,10 @@ protected void onPostExecute(String teDhenat) {
 		{
 			Mesazhi.setText("Me shume se 5 rekorde jane gjetur me kushtet tuaja, ju lutem vendosni kushte me specifike");
 		}
+		else
+		{
+			showSelectAlert(Data);
+		}
 	}
 	else
 	{
@@ -463,6 +472,82 @@ protected void onPostExecute(String teDhenat) {
 	}
     }
 }	
+
+	private void showSelectAlert(String Data) {
+		
+		final String[] Array = Data.split("--->");
+		Alert = new AlertDialog.Builder(this);
+		String strTitle = "Zgjedhni njerin nga opcionet!";
+		String strMessage = "Me shume se 2 adresa jane gjetur me kriteret tuaja !";
+		String strOK = "OK";
+		final RadioButton[] Buttons = new RadioButton[Array.length/2];
+		RadioGroup Grupi = new RadioGroup(this);
+		Grupi.setOrientation(RadioGroup.VERTICAL);
+		
+		for(int i = 0;i<(Array.length);i=i+2) 
+		{
+			
+				String text ="";
+				text +=Array[i]+", ";
+				String teDhenat=Array[i+1];
+				Buttons[i/2] = new RadioButton(this);
+				
+				if(Lloji.equals("Individ"))
+				{
+					
+					String EmriMbiemri = teDhenat.substring(0,teDhenat.indexOf("DataLindjes=>"));
+					String dataLindjes = teDhenat.substring(teDhenat.indexOf("DataLindjes=>")+13,teDhenat.indexOf("VendiLindjes=>")-11);
+					String vendiLindjes = teDhenat.substring(teDhenat.indexOf("VendiLindjes=>")+14);
+					
+					text += EmriMbiemri+", "+dataLindjes+", "+vendiLindjes;
+				}
+				else if(Lloji.equals("Biznes"))
+				{
+					String Emri = teDhenat.substring(0,teDhenat.indexOf("Pronari=>"));
+					String Pronari = teDhenat.substring(teDhenat.indexOf("Pronari=>")+9,teDhenat.indexOf("Veprimtaria=>"));
+					String Veprimtaria = teDhenat.substring(teDhenat.indexOf("Veprimtaria=>")+13);
 	
+					text += Emri+", "+Pronari+", "+Veprimtaria;
+				}
+				else if(Lloji.equals("Institucion"))
+				{
+					String Emri = teDhenat.substring(0,teDhenat.indexOf("Telefoni=>"));
+					String Telefoni = teDhenat.substring(teDhenat.indexOf("Telefoni=>")+10,teDhenat.indexOf("Lloji=>"));
+					String lloji = teDhenat.substring(teDhenat.indexOf("Lloji=>")+7);
+					
+					text += Emri+", "+Telefoni+", "+lloji;
+				}
+			Buttons[i/2].setText(text);
+			Grupi.addView(Buttons[i/2]);
+		}
+		
+		Alert.setTitle(strTitle);
+		Alert.setMessage(strMessage);
+		Alert.setView(Grupi);
+		Alert.setPositiveButton(strOK,
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+					for(int i = 0;i<(Array.length/2);i++)
+					 {
+						 if(Buttons[i].isChecked())
+						 {
+							 Username = Array[2*i]; 
+							 new lexoTask().execute(Username);
+							 new lexoKordinatatTask().execute(Username);
+						 }
+					 }
+					}});
+		Alert.setNegativeButton("Anulo", 
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+					 {
+					 }
+					}});
+		Alert.show();
+	}
 	
 }
